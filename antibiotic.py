@@ -12,7 +12,6 @@ for folder in os.listdir(base_path):
         filename_component = [i for i in files.split('_')]
 
         df = pd.read_csv(path, sep=',').drop('Unnamed: 0', axis=1)
-        df['Voltage, V'] = df['Voltage, V']
         df = df.set_index('Voltage, V').T.rename(index={'Current, A': 0})
         df['antibiotic'] = filename_component[0]
         df['concentration'] = float(filename_component[1])
